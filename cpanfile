@@ -1,3 +1,7 @@
+requires "Carp" => "0";
+requires "Class::Tiny" => "0";
+requires "HTTP::Tiny" => "0";
+requires "JSON::Any" => "0";
 requires "strict" => "0";
 requires "warnings" => "0";
 

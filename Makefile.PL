@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker ;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Net::Leankit is ...",
+  "ABSTRACT" => "Net::Leankit is a perl library for Leankit.com",
   "AUTHOR" => "Adam Stokes <adamjs\@cpan.org>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
@@ -20,6 +20,10 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Net::Leankit",
   "PREREQ_PM" => {
+    "Carp" => 0,
+    "Class::Tiny" => 0,
+    "HTTP::Tiny" => 0,
+    "JSON::Any" => 0,
     "strict" => 0,
     "warnings" => 0
   },
@@ -29,7 +33,7 @@ my %WriteMakefileArgs = (
     "Test::More" => 0,
     "Test::NoTabs" => 0
   },
-  "VERSION" => "0.1",
+  "VERSION" => "0.001",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -37,6 +41,10 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "Carp" => 0,
+  "Class::Tiny" => 0,
+  "HTTP::Tiny" => 0,
+  "JSON::Any" => 0,
   "Mojolicious" => 0,
   "Test::Mojo" => 0,
   "Test::More" => 0,

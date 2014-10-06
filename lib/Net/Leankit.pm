@@ -86,4 +86,23 @@ sub getBoard {
     return $self->client('GET', $boardId);
 }
 
+
+=method getBoardByName(STR boardName)
+
+Finds a board by name
+
+=cut
+
+sub getBoardByName {
+    my ($self, $boardName) = @_;
+    foreach my $board (@{$self->getBoards}) {
+        if (defined $board && length $board) {
+            if ($board->{title} =~ /$boardName/) {
+                return $self->getBoard($board->{Id});
+            }
+        }
+    }
+    return +{};
+}
+
 1;

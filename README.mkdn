@@ -1,10 +1,46 @@
 # NAME
 
-Net::Leankit - Net::Leankit is ...
+Net::Leankit - Net::Leankit is a perl library for Leankit.com
 
 # VERSION
 
-version 0.1
+version 0.001
+
+# ATTRIBUTES
+
+## username
+
+Username, which is your email.
+
+## password
+
+Password
+
+## account
+
+Account name in which your account is under, usually a company name.
+
+# METHODS
+
+## client
+
+Builds client url and sets up authentication with api service
+
+## getBoards
+
+Returns list of boards
+
+## getNewBoards
+
+Returns list of latest created boards
+
+## getBoard(INT id)
+
+Gets leankit board by id
+
+## getBoardByName(STR boardName)
+
+Finds a board by name
 
 # AUTHOR
 
