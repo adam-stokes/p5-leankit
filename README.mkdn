@@ -4,7 +4,15 @@ Net::LeanKit - A perl library for Leankit.com
 
 # VERSION
 
-version 0.2
+version 0.3
+
+# SYNOPSIS
+
+    use Net::LeanKit;
+    my $lk = Net::LeanKit(email => 'user\@.mail.com',
+                          password => 'pass',
+                          account => 'my company');
+    $lk->getBoards;
 
 # ATTRIBUTES
 
@@ -22,9 +30,13 @@ Account name in which your account is under, usually a company name.
 
 # METHODS
 
-## client
+## get(STR endpoint)
 
-Builds client url and sets up authentication with api service
+GET requests to leankit
+
+## post(STR endpoint, HASH body)
+
+POST requests to leankit
 
 ## getBoards
 
@@ -77,6 +89,42 @@ Get specific card for board
 ## getCardByExternalId(INT boardId, INT cardId)
 
 Get specific card for board by an external id
+
+## addCard(INT boardId, INT laneId, INT position, HASHREF card)
+
+Add a card to the board/lane specified. The card hash usually contains
+
+    { TypeId => 1,
+      Title => 'my card title',
+      ExternCardId => DATETIME,
+      Priority => 1
+    }
+
+## addCards(INT boardId, ARRAYREF cards)
+
+Add multiple cards to the board/lane specified. The card hash usually contains
+
+    { TypeId => 1,
+      Title => 'my card title',
+      ExternCardId => DATETIME,
+      Priority => 1
+    }
+
+## moveCard(INT boardId, INT cardId, INT toLaneId, INT position)
+
+Moves card to different lanes
+
+## moveCardByExternalId(INT boardId, INT externalCardId, INT toLaneId, INT position)
+
+Moves card to different lanes by externalId
+
+## moveCardToBoard(INT cardId, INT destinationBoardId)
+
+Moves card to another board
+
+## updateCard(INT boardId, HASHREF card)
+
+Update a card
 
 # AUTHOR
 
