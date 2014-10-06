@@ -1,5 +1,5 @@
 ---
-abstract: 'Net::LeanKit is a perl library for Leankit.com'
+abstract: 'A perl library for Leankit.com'
 author:
   - 'Adam Stokes <adamjs@cpan.org>'
 build_requires:
@@ -34,4 +34,4 @@ requires:
   warnings: '0'
 resources:
   repository: git://github.com/battlemidget/p5-leankit.git
-version: '0.1'
+version: '0.2'

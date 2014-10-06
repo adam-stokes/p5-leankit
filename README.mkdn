@@ -1,10 +1,10 @@
 # NAME
 
-Net::LeanKit - Net::LeanKit is a perl library for Leankit.com
+Net::LeanKit - A perl library for Leankit.com
 
 # VERSION
 
-version 0.1
+version 0.2
 
 # ATTRIBUTES
 
@@ -41,6 +41,42 @@ Gets leankit board by id
 ## getBoardByName(STR boardName)
 
 Finds a board by name
+
+## getBoardIdentifiers(INT boardId)
+
+Get board identifiers
+
+## getBoardBacklogLanes(INT boardId)
+
+Get board back log lanes
+
+## getBoardArchiveLanes(INT boardId)
+
+Get board archive lanes
+
+## getBoardArchiveCards(INT boardId)
+
+Get board archive cards
+
+## getNewerIfExists(INT boardId, INT version)
+
+Get newer board version if exists
+
+## getBoardHistorySince(INT boardId, INT version)
+
+Get newer board history
+
+## getBoardUpdates(INT boardId, INT version)
+
+Get board updates
+
+## getCard(INT boardId, INT cardId)
+
+Get specific card for board
+
+## getCardByExternalId(INT boardId, INT cardId)
+
+Get specific card for board by an external id
 
 # AUTHOR
 

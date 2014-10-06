@@ -3,8 +3,26 @@ Changes from 2013-10-06 00:00:00 +0000 to present.
 ==================================================
 
 ----------------------------------------
-version 0.1 at 2014-10-06 19:10:11 +0000
+version 0.2 at 2014-10-06 19:41:29 +0000
 ----------------------------------------
+
+  Change: a89ae3abbd2a7f1866a019f125cc34e76d66fb05
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-06 15:36:06 +0000
+
+    add rest of GET api
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+----------------------------------------
+version 0.1 at 2014-10-06 19:10:21 +0000
+----------------------------------------
+
+  Change: 68f6b8ac263e7c4647b630594c38d9d4aa11c878
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-06 15:10:21 +0000
+
+    v0.1 
 
   Change: 18dc6dba4673e9c52bca517cc432556b6019f579
   Author: Adam Stokes <adam.stokes@ubuntu.com>
