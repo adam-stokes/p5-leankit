@@ -3,30 +3,28 @@
 use strict;
 use warnings;
 use Test::More;
-use FindBin;
-use lib "$FindBin::Bin../../lib";
 
 plan skip_all =>
-  'set LEANKIT_USER, LEANKIT_PASSWORD, LEANKIT_ACCOUNT to enable these tests'
-  unless $ENV{LEANKIT_USER}
+  'set LEANKIT_EMAIL, LEANKIT_PASSWORD, LEANKIT_ACCOUNT to enable these tests'
+  unless $ENV{LEANKIT_EMAIL}
   && $ENV{LEANKIT_PASSWORD}
   && $ENV{LEANKIT_ACCOUNT};
 
 diag("Testing LeanKit API");
 
-ok_use('Net::LeanKit');
-use Net::LeanKit;
+use_ok('Net::LeanKit');
 
-my $username = $ENV{LEANKIT_USER};
+my $email = $ENV{LEANKIT_EMAIL};
 my $password = $ENV{LEANKIT_PASSWORD};
 my $account = $ENV{LEANKIT_ACCOUNT};
 
 my $lk = Net::LeanKit->new(
-    username => $username,
+    email => $email,
     password => $password,
     account  => $account
 );
 
 ok(length $lk->getBoards, "Found some boards.");
+ok($lk->getBoardByName('Solutions Engineering - Openstack'), 'Querying board by title');
 
 done_testing();

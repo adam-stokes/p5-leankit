@@ -1,16 +1,18 @@
-package Net::Leankit;
+package Net::LeanKit;
 
-# ABSTRACT: Net::Leankit is a perl library for Leankit.com
+# ABSTRACT: Net::LeanKit is a perl library for Leankit.com
 
 use strict;
 use warnings;
 use Carp;
 use HTTP::Tiny;
 use JSON::Any;
+use URI::Escape;
+use namespace::clean;
 
-=attr username
+=attr email
 
-Username, which is your email.
+Login email
 
 =attr password
 
@@ -22,11 +24,11 @@ Account name in which your account is under, usually a company name.
 
 =cut
 
-use Class::Tiny qw( username password account );
+use Class::Tiny qw( email password account );
 
 sub BUILD {
     my ($self, $args) = @_;
-    for my $req (qw/ username password account/) {
+    for my $req (qw/ email password account/) {
         croak "$req attribute required" unless defined $self->$req;
     }
 }
@@ -39,15 +41,17 @@ Builds client url and sets up authentication with api service
 
 sub client {
     my ($self, $method, $endpoint) = @_;
-    my $url = sprintf('https://%s:%s@%s.leankit.com/kanban/api/%s',
-        $self->username, $self->password, $self->account, $endpoint);
+    my $auth = uri_escape(sprintf("%s:%s", $self->email, $self->password));
+    my $url = sprintf('https://%s@%s.leankit.com/kanban/api/%s',
+        $auth, $self->account, $endpoint);
     my $http = HTTP::Tiny->new;
     my $j    = JSON::Any->new;
     my $res  = $http->request(uc $method, $url);
-    if (length $res->{content}) {
-        return $j->decode($res->{content});
+    my $j_res = $j->decode($res->{content});
+    if ($j_res->{ReplyCode} == 200) {
+        return $j_res->{ReplyData}->[0];
     }
-    return +{};
+    return +[];
 }
 
 
@@ -59,7 +63,8 @@ Returns list of boards
 
 sub getBoards {
     my ($self) = @_;
-    return $self->client('GET', 'boards');
+    my $res = $self->client('GET', 'boards');
+    return $res;
 }
 
 
@@ -96,13 +101,9 @@ Finds a board by name
 sub getBoardByName {
     my ($self, $boardName) = @_;
     foreach my $board (@{$self->getBoards}) {
-        if (defined $board && length $board) {
-            if ($board->{title} =~ /$boardName/) {
-                return $self->getBoard($board->{Id});
-            }
-        }
+        next unless $board->{Title} =~ /$boardName/i;
+        return $board;
     }
-    return +{};
 }
 
 1;

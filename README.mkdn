@@ -1,16 +1,16 @@
 # NAME
 
-Net::Leankit - Net::Leankit is a perl library for Leankit.com
+Net::LeanKit - Net::LeanKit is a perl library for Leankit.com
 
 # VERSION
 
-version 0.001
+version 0.1
 
 # ATTRIBUTES
 
-## username
+## email
 
-Username, which is your email.
+Login email
 
 ## password
 
