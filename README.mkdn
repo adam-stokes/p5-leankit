@@ -96,7 +96,7 @@ Add a card to the board/lane specified. The card hash usually contains
 
     { TypeId => 1,
       Title => 'my card title',
-      ExternCardId => DATETIME,
+      ExternalCardId => DATETIME,
       Priority => 1
     }
 
