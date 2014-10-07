@@ -3,8 +3,26 @@ Changes from 2013-10-07 00:00:00 +0000 to present.
 ==================================================
 
 ----------------------------------------
-version 0.5 at 2014-10-07 15:49:37 +0000
+version 0.6 at 2014-10-07 20:30:11 +0000
 ----------------------------------------
+
+  Change: 79f967f476657f7a6a4c59ec024a22ec619a0b46
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-07 16:27:21 +0000
+
+    split tests into their own category
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+----------------------------------------
+version 0.5 at 2014-10-07 15:49:50 +0000
+----------------------------------------
+
+  Change: 5cc642487d74aa40d5793fa61ae447529785517b
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-07 11:49:50 +0000
+
+    v0.5 
 
   Change: 53d80230614b23c1cf6db846aa4a1dd4a973150e
   Author: Adam Stokes <adam.stokes@ubuntu.com>

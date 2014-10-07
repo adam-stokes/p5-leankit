@@ -3,6 +3,7 @@ abstract: 'A perl library for Leankit.com'
 author:
   - 'Adam Stokes <adamjs@cpan.org>'
 build_requires:
+  DDP: '0'
   ExtUtils::MakeMaker: '0'
   File::Spec: '0'
   IO::Handle: '0'
@@ -30,4 +31,4 @@ requires:
   warnings: '0'
 resources:
   repository: git://github.com/battlemidget/p5-leankit.git
-version: '0.5'
+version: '0.6'

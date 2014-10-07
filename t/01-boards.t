@@ -57,4 +57,5 @@ ok($lk->getCard($boardId, $newCard->[0]->{Id}), 'Found card by cardId');
 ok($newCard->[0]->{Title} eq 'API Test', 'Found created card by title');
 ok($lk->deleteCard($boardId, $newCard->[0]->{Id}), "Deleted card");
 
+
 done_testing();
