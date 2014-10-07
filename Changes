@@ -1,10 +1,28 @@
 ==================================================
-Changes from 2013-10-06 00:00:00 +0000 to present.
+Changes from 2013-10-07 00:00:00 +0000 to present.
 ==================================================
 
 ----------------------------------------
-version 0.3 at 2014-10-06 20:37:45 +0000
+version 0.4 at 2014-10-07 05:14:04 +0000
 ----------------------------------------
+
+  Change: e3a275c33197395eb103c292729a57b3af466a66
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-07 01:13:56 +0000
+
+    complete api spec
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+----------------------------------------
+version 0.3 at 2014-10-06 20:40:03 +0000
+----------------------------------------
+
+  Change: 1dfde7a47fbafb74994873fe3d885cfbbb4c3e36
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-06 16:40:03 +0000
+
+    v0.3 
 
   Change: 8d0c15d37585e83aeb28e651140fd5ebe6eb4d6b
   Author: Adam Stokes <adam.stokes@ubuntu.com>

@@ -4,7 +4,7 @@ Net::LeanKit - A perl library for Leankit.com
 
 # VERSION
 
-version 0.3
+version 0.4
 
 # SYNOPSIS
 
@@ -30,11 +30,11 @@ Account name in which your account is under, usually a company name.
 
 # METHODS
 
-## get(STR endpoint)
+## get
 
 GET requests to leankit
 
-## post(STR endpoint, HASH body)
+## post
 
 POST requests to leankit
 
@@ -46,31 +46,31 @@ Returns list of boards
 
 Returns list of latest created boards
 
-## getBoard(INT id)
+## getBoard
 
 Gets leankit board by id
 
-## getBoardByName(STR boardName)
+## getBoardByName
 
 Finds a board by name
 
-## getBoardIdentifiers(INT boardId)
+## getBoardIdentifiers
 
 Get board identifiers
 
-## getBoardBacklogLanes(INT boardId)
+## getBoardBacklogLanes
 
 Get board back log lanes
 
-## getBoardArchiveLanes(INT boardId)
+## getBoardArchiveLanes
 
 Get board archive lanes
 
-## getBoardArchiveCards(INT boardId)
+## getBoardArchiveCards
 
 Get board archive cards
 
-## getNewerIfExists(INT boardId, INT version)
+## getNewerIfExists
 
 Get newer board version if exists
 
@@ -78,19 +78,19 @@ Get newer board version if exists
 
 Get newer board history
 
-## getBoardUpdates(INT boardId, INT version)
+## getBoardUpdates
 
 Get board updates
 
-## getCard(INT boardId, INT cardId)
+## getCard
 
 Get specific card for board
 
-## getCardByExternalId(INT boardId, INT cardId)
+## getCardByExternalId
 
 Get specific card for board by an external id
 
-## addCard(INT boardId, INT laneId, INT position, HASHREF card)
+## addCard
 
 Add a card to the board/lane specified. The card hash usually contains
 
@@ -100,7 +100,7 @@ Add a card to the board/lane specified. The card hash usually contains
       Priority => 1
     }
 
-## addCards(INT boardId, ARRAYREF cards)
+## addCards
 
 Add multiple cards to the board/lane specified. The card hash usually contains
 
@@ -110,21 +110,116 @@ Add multiple cards to the board/lane specified. The card hash usually contains
       Priority => 1
     }
 
-## moveCard(INT boardId, INT cardId, INT toLaneId, INT position)
+## moveCard
 
 Moves card to different lanes
 
-## moveCardByExternalId(INT boardId, INT externalCardId, INT toLaneId, INT position)
+## moveCardByExternalId
 
 Moves card to different lanes by externalId
 
-## moveCardToBoard(INT cardId, INT destinationBoardId)
+## moveCardToBoard
 
 Moves card to another board
 
-## updateCard(INT boardId, HASHREF card)
+## updateCard
 
 Update a card
+
+## updateCardFields
+
+Update fields in card
+
+## getComments
+
+Get comments for card
+
+## addComment
+
+Add comment for card
+
+## addCommentByExternalId
+
+Add comment for card
+
+## getCardHistory
+
+Get card history
+
+## searchCards
+
+Search cards, options is a hashref of search options
+
+Eg,
+
+    searchOptions = {
+        IncludeArchiveOnly: false,
+        IncludeBacklogOnly: false,
+        IncludeComments: false,
+        IncludeDescription: false,
+        IncludeExternalId: false,
+        IncludeTags: false,
+        AddedAfter: null,
+        AddedBefore: null,
+        CardTypeIds: [],
+        ClassOfServiceIds: [],
+        Page: 1,
+        MaxResults: 20,
+        OrderBy: "CreatedOn",
+        SortOrder: 0
+    };
+
+## getNewCards
+
+Get latest added cards
+
+## deleteCard
+
+Delete a single card
+
+## deleteCards
+
+Delete batch of cards
+
+## getTaskBoard
+
+Get task board
+
+## addTask
+
+Adds task to card
+
+## updateTask
+
+Updates task in card
+
+## deleteTask
+
+Deletes task
+
+## getTaskBoardUpdates
+
+Get latest task additions/changes
+
+## moveTask
+
+Moves task to different lanes
+
+## getAttachmentCount
+
+Get num of attachments for card
+
+## getAttachments
+
+Get list of attachments
+
+## getAttachment
+
+Get single attachment
+
+## deleteAttachment
+
+Removes attachment from card
 
 # AUTHOR
 

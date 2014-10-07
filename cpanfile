@@ -3,7 +3,6 @@ requires "Class::Tiny" => "0";
 requires "HTTP::Tiny" => "0";
 requires "JSON::Any" => "0";
 requires "URI::Escape" => "0";
-requires "namespace::clean" => "0";
 requires "strict" => "0";
 requires "warnings" => "0";
 
@@ -13,7 +12,6 @@ on 'test' => sub {
   requires "IO::Handle" => "0";
   requires "IPC::Open3" => "0";
   requires "Mojolicious" => "0";
-  requires "Test::CleanNamespaces" => "0";
   requires "Test::Kwalitee" => "0";
   requires "Test::Mojo" => "0";
   requires "Test::More" => "0";
@@ -30,7 +28,6 @@ on 'configure' => sub {
 };
 
 on 'develop' => sub {
-  requires "Test::CleanNamespaces" => "0.15";
   requires "Test::Kwalitee" => "1.21";
   requires "Test::More" => "0";
   requires "Test::NoTabs" => "0";

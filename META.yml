@@ -8,7 +8,6 @@ build_requires:
   IO::Handle: '0'
   IPC::Open3: '0'
   Mojolicious: '0'
-  Test::CleanNamespaces: '0'
   Test::Kwalitee: '0'
   Test::Mojo: '0'
   Test::More: '0'
@@ -29,9 +28,8 @@ requires:
   HTTP::Tiny: '0'
   JSON::Any: '0'
   URI::Escape: '0'
-  namespace::clean: '0'
   strict: '0'
   warnings: '0'
 resources:
   repository: git://github.com/battlemidget/p5-leankit.git
-version: '0.3'
+version: '0.4'

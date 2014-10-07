@@ -8,7 +8,6 @@ use Carp;
 use HTTP::Tiny;
 use JSON::Any;
 use URI::Escape;
-use namespace::clean;
 
 =head1 SYNOPSIS
 
@@ -53,7 +52,7 @@ sub BUILD {
 }
 
 
-=method get(STR endpoint)
+=method get
 
 GET requests to leankit
 
@@ -71,7 +70,7 @@ sub get {
     return $content->{ReplyData}->[0];
 }
 
-=method post(STR endpoint, HASH body)
+=method post
 
 POST requests to leankit
 
@@ -121,7 +120,7 @@ sub getNewBoards {
     return $self->get('ListNewBoards');
 }
 
-=method getBoard(INT id)
+=method getBoard
 
 Gets leankit board by id
 
@@ -134,7 +133,7 @@ sub getBoard {
 }
 
 
-=method getBoardByName(STR boardName)
+=method getBoardByName
 
 Finds a board by name
 
@@ -148,7 +147,7 @@ sub getBoardByName {
     }
 }
 
-=method getBoardIdentifiers(INT boardId)
+=method getBoardIdentifiers
 
 Get board identifiers
 
@@ -168,7 +167,7 @@ sub getBoardIdentifiers {
     return $self->boardIdentifiers->{$boardId};
 }
 
-=method getBoardBacklogLanes(INT boardId)
+=method getBoardBacklogLanes
 
 Get board back log lanes
 
@@ -180,7 +179,7 @@ sub getBoardBacklogLanes {
     return $self->get($board);
 }
 
-=method getBoardArchiveLanes(INT boardId)
+=method getBoardArchiveLanes
 
 Get board archive lanes
 
@@ -192,7 +191,7 @@ sub getBoardArchiveLanes {
     return $self->get($board);
 }
 
-=method getBoardArchiveCards(INT boardId)
+=method getBoardArchiveCards
 
 Get board archive cards
 
@@ -204,7 +203,7 @@ sub getBoardArchiveCards {
     return $self->get($board);
 }
 
-=method getNewerIfExists(INT boardId, INT version)
+=method getNewerIfExists
 
 Get newer board version if exists
 
@@ -230,7 +229,7 @@ sub getBoardHistorySince {
     return $self->get($board);
 }
 
-=method getBoardUpdates(INT boardId, INT version)
+=method getBoardUpdates
 
 Get board updates
 
@@ -243,7 +242,7 @@ sub getBoardUpdates {
     return $self->get($board);
 }
 
-=method getCard(INT boardId, INT cardId)
+=method getCard
 
 Get specific card for board
 
@@ -255,7 +254,7 @@ sub getCard {
     return $self->get($board);
 }
 
-=method getCardByExternalId(INT boardId, INT cardId)
+=method getCardByExternalId
 
 Get specific card for board by an external id
 
@@ -269,7 +268,7 @@ sub getCardByExternalId {
 }
 
 
-=method addCard(INT boardId, INT laneId, INT position, HASHREF card)
+=method addCard
 
 Add a card to the board/lane specified. The card hash usually contains
 
@@ -290,7 +289,7 @@ sub addCard {
     return $self->post($newCard, $card);
 }
 
-=method addCards(INT boardId, ARRAYREF cards)
+=method addCards
 
 Add multiple cards to the board/lane specified. The card hash usually contains
 
@@ -311,7 +310,7 @@ sub addCards {
 }
 
 
-=method moveCard(INT boardId, INT cardId, INT toLaneId, INT position)
+=method moveCard
 
 Moves card to different lanes
 
@@ -327,7 +326,7 @@ sub moveCard {
 }
 
 
-=method moveCardByExternalId(INT boardId, INT externalCardId, INT toLaneId, INT position)
+=method moveCardByExternalId
 
 Moves card to different lanes by externalId
 
@@ -345,7 +344,7 @@ sub moveCardByExternalId {
 }
 
 
-=method moveCardToBoard(INT cardId, INT destinationBoardId)
+=method moveCardToBoard
 
 Moves card to another board
 
@@ -360,7 +359,7 @@ sub moveCardToBoard {
 }
 
 
-=method updateCard(INT boardId, HASHREF card)
+=method updateCard
 
 Update a card
 
@@ -371,6 +370,256 @@ sub updateCard {
     $card->{UserWipOverrideComment} = $self->defaultWipOverrideReason;
     my $updateCard = sprintf('board/%s/UpdateCardWithWipOverride');
     return $self->post($updateCard, $card);
+}
+
+=method updateCardFields
+
+Update fields in card
+
+=cut
+sub updateCardFields {
+  my ($self, $updateFields) = @_;
+  return $self->post('card/update', $updateFields);
+}
+
+=method getComments
+
+Get comments for card
+
+=cut
+sub getComments {
+  my ($self, $boardId, $cardId) = @_;
+  my $comment = sprintf('card/getcomments/%s/%s', $boardId, $cardId);
+  return $self->get($comment);
+}
+
+=method addComment
+
+Add comment for card
+
+=cut
+sub addComment {
+    my ($self, $boardId, $cardId, $userId, $comment) = @_;
+    my $params = {PostedById => $userId, Text => $comment};
+    my $addComment = sprintf('card/savecomment/%s/%s', $boardId, $cardId);
+    return $self->post($addComment, $params);
+}
+
+=method addCommentByExternalId
+
+Add comment for card
+
+=cut
+
+sub addCommentByExternalId {
+    my ($self, $boardId, $externalCardId, $userId, $comment) = @_;
+    my $params = {PostedById => $userId, Text => $comment};
+    my $addComment = sprintf('card/savecommentbyexternalid/%s/%s',
+        $boardId, uri_escape($externalCardId));
+    return $self->post($addComment, $params);
+}
+
+=method getCardHistory
+
+Get card history
+
+=cut
+sub getCardHistory {
+  my ($self, $boardId, $cardId) = @_;
+  my $history = sprintf('card/history/%s/%s', $boardId, $cardId);
+  return $self->get($history);
+}
+
+
+=method searchCards
+
+Search cards, options is a hashref of search options
+
+Eg,
+
+    searchOptions = {
+        IncludeArchiveOnly: false,
+        IncludeBacklogOnly: false,
+        IncludeComments: false,
+        IncludeDescription: false,
+        IncludeExternalId: false,
+        IncludeTags: false,
+        AddedAfter: null,
+        AddedBefore: null,
+        CardTypeIds: [],
+        ClassOfServiceIds: [],
+        Page: 1,
+        MaxResults: 20,
+        OrderBy: "CreatedOn",
+        SortOrder: 0
+    };
+=cut
+
+sub searchCards {
+    my ($self, $boardId, $options) = @_;
+    my $search = sprintf('board/%s/searchcards', $boardId);
+    return $self->post($search, $options);
+}
+
+=method getNewCards
+
+Get latest added cards
+
+=cut
+sub getNewCards {
+    my ($self, $boardId) = @_;
+    my $newCards = sprintf('board/%s/listnewcards', $boardId);
+    return $self->get($newCards);
+}
+
+=method deleteCard
+
+Delete a single card
+
+=cut
+sub deleteCard {
+    my ($self, $boardId, $cardId) = @_;
+    my $delCard = sprintf('board/%s/deletecard/%s', $boardId, $cardId);
+    return $self->post($delCard, {});
+}
+
+=method deleteCards
+
+Delete batch of cards
+
+=cut
+sub deleteCards {
+    my ($self, $boardId, $cardIds) = @_;
+    my $delCard = sprintf('board/%s/deletecards', $boardId);
+    return $self->post($delCard, $cardIds);
+}
+
+=method getTaskBoard
+
+Get task board
+
+=cut
+sub getTaskBoard {
+    my ($self, $boardId, $cardId) = @_;
+    my $taskBoard =
+      sprintf('v1/board/%s/card/%s/taskboard', $boardId, $cardId);
+    return $self->get($taskBoard);
+}
+
+=method addTask
+
+Adds task to card
+
+=cut
+sub addTask {
+    my ($self, $boardId, $cardId, $taskCard) = @_;
+    $taskCard->{UserWipOverrideComment} = $self->defaultWipOverrideReason;
+    my $url = sprintf('v1/board/%s/card/%s/tasks/lane/%s/position/%s',
+        $boardId, $cardId, $taskCard->{LaneId}, $taskCard->{Index});
+    return $self->post($url, $taskCard);
+}
+
+=method updateTask
+
+Updates task in card
+
+=cut
+sub updateTask {
+    my ($self, $boardId, $cardId, $taskCard) = @_;
+    $taskCard->{UserWipOverrideComment} = $self->defaultWipOverrideReason;
+    my $url = sprintf('v1/board/%s/update/card/%s/tasks/%s',
+        $boardId, $cardId, $taskCard->{Id});
+    return $self->post($url, $taskCard);
+}
+
+=method deleteTask
+
+Deletes task
+
+=cut
+sub deleteTask {
+    my ($self, $boardId, $cardId, $taskId) = @_;
+    my $url = sprintf('v1/board/%s/delete/card/%s/tasks/%s',
+        $boardId, $cardId, $taskId);
+    return $self->post($url, {});
+}
+
+=method getTaskBoardUpdates
+
+Get latest task additions/changes
+
+=cut
+sub getTaskBoardUpdates {
+    my ($self, $boardId, $cardId, $version) = @_;
+    my $url = sprintf('v1/board/%s/card/%s/tasks/boardversion/%s',
+        $boardId, $cardId, $version);
+    return $self->get($url);
+}
+
+=method moveTask
+
+Moves task to different lanes
+
+=cut
+sub moveTask {
+    my ($self, $boardId, $cardId, $taskId, $toLaneId, $position) = @_;
+    my $url = sprintf('v1/board/%s/move/card/%s/tasks/%s/lane/%s/position/%s',
+        $boardId, $cardId, $taskId, $toLaneId, $position);
+    return $self->post($url, {});
+}
+
+=method getAttachmentCount
+
+Get num of attachments for card
+
+=cut
+sub getAttachmentCount {
+  my ($self, $boardId, $cardId) = @_;
+  my $url = sprintf('card/GetAttachmentsCount/%s/%s', $boardId, $cardId);
+  return $self->get($url);
+}
+
+=method getAttachments
+
+Get list of attachments
+
+=cut
+sub getAttachments {
+  my ($self, $boardId, $cardId) = @_;
+  my $url = sprintf('card/GetAttachments/%s/%s', $boardId, $cardId);
+  return $self->get($url);
+}
+
+=method getAttachment
+
+Get single attachment
+
+=cut
+sub getAttachment {
+  my ($self, $boardId, $cardId, $attachmentId) = @_;
+  my $url = sprintf('card/GetAttachments/%s/%s/%s', $boardId, $cardId, $attachmentId);
+  return $self->get($url);
+}
+
+sub downloadAttachment {
+  my $self = shift;
+  return 'Not implemented';
+}
+
+=method deleteAttachment
+
+Removes attachment from card
+
+=cut
+sub deleteAttachment {
+  my ($self, $boardId, $cardId, $attachmentId) = @_;
+  my $url = sprintf('card/DeleteAttachment/%s/%s/%s', $boardId, $cardId, $attachmentId);
+  return $self->post($url, {});
+}
+
+sub addAttachment {
+  my $self = shift;
+  return 'Not Implemented';
 }
 
 1;

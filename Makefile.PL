@@ -25,7 +25,6 @@ my %WriteMakefileArgs = (
     "HTTP::Tiny" => 0,
     "JSON::Any" => 0,
     "URI::Escape" => 0,
-    "namespace::clean" => 0,
     "strict" => 0,
     "warnings" => 0
   },
@@ -35,13 +34,12 @@ my %WriteMakefileArgs = (
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
     "Mojolicious" => 0,
-    "Test::CleanNamespaces" => 0,
     "Test::Kwalitee" => 0,
     "Test::Mojo" => 0,
     "Test::More" => 0,
     "Test::NoTabs" => 0
   },
-  "VERSION" => "0.3",
+  "VERSION" => "0.4",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -58,13 +56,11 @@ my %FallbackPrereqs = (
   "IPC::Open3" => 0,
   "JSON::Any" => 0,
   "Mojolicious" => 0,
-  "Test::CleanNamespaces" => 0,
   "Test::Kwalitee" => 0,
   "Test::Mojo" => 0,
   "Test::More" => 0,
   "Test::NoTabs" => 0,
   "URI::Escape" => 0,
-  "namespace::clean" => 0,
   "strict" => 0,
   "warnings" => 0
 );
