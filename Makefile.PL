@@ -33,13 +33,11 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
-    "Mojolicious" => 0,
     "Test::Kwalitee" => 0,
-    "Test::Mojo" => 0,
     "Test::More" => 0,
     "Test::NoTabs" => 0
   },
-  "VERSION" => "0.4",
+  "VERSION" => "0.5",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -55,9 +53,7 @@ my %FallbackPrereqs = (
   "IO::Handle" => 0,
   "IPC::Open3" => 0,
   "JSON::Any" => 0,
-  "Mojolicious" => 0,
   "Test::Kwalitee" => 0,
-  "Test::Mojo" => 0,
   "Test::More" => 0,
   "Test::NoTabs" => 0,
   "URI::Escape" => 0,

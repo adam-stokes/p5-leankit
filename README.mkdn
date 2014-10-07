@@ -4,7 +4,7 @@ Net::LeanKit - A perl library for Leankit.com
 
 # VERSION
 
-version 0.4
+version 0.5
 
 # SYNOPSIS
 
@@ -74,7 +74,7 @@ Get board archive cards
 
 Get newer board version if exists
 
-## getBoardHistorySince(INT boardId, INT version)
+## getBoardHistorySince
 
 Get newer board history
 

@@ -7,9 +7,7 @@ build_requires:
   File::Spec: '0'
   IO::Handle: '0'
   IPC::Open3: '0'
-  Mojolicious: '0'
   Test::Kwalitee: '0'
-  Test::Mojo: '0'
   Test::More: '0'
   Test::NoTabs: '0'
   perl: '5.006'
@@ -32,4 +30,4 @@ requires:
   warnings: '0'
 resources:
   repository: git://github.com/battlemidget/p5-leankit.git
-version: '0.4'
+version: '0.5'

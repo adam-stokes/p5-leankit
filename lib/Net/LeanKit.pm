@@ -216,7 +216,7 @@ sub getNewerIfExists {
     return $self->get($board);
 }
 
-=method getBoardHistorySince(INT boardId, INT version)
+=method getBoardHistorySince
 
 Get newer board history
 
