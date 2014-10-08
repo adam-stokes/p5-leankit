@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 use Data::UUID;
-use DDP;
 use Test::More;
 
 plan skip_all =>
