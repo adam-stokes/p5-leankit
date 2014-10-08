@@ -29,7 +29,6 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "DDP" => 0,
     "Data::UUID" => 0,
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
@@ -49,7 +48,6 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "Carp" => 0,
   "Class::Tiny" => 0,
-  "DDP" => 0,
   "Data::UUID" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,

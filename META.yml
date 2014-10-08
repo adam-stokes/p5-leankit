@@ -3,7 +3,6 @@ abstract: 'A perl library for Leankit.com'
 author:
   - 'Adam Stokes <adamjs@cpan.org>'
 build_requires:
-  DDP: '0'
   Data::UUID: '0'
   ExtUtils::MakeMaker: '0'
   File::Spec: '0'
