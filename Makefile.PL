@@ -21,10 +21,14 @@ my %WriteMakefileArgs = (
   "NAME" => "Net::LeanKit",
   "PREREQ_PM" => {
     "Carp" => 0,
-    "Class::Tiny" => 0,
     "HTTP::Tiny" => 0,
     "JSON::Any" => 0,
+    "Method::Signatures" => 0,
+    "Moo" => 0,
+    "Path::Tiny" => 0,
+    "Types::Standard" => 0,
     "URI::Escape" => 0,
+    "namespace::clean" => 0,
     "strict" => 0,
     "warnings" => 0
   },
@@ -38,7 +42,7 @@ my %WriteMakefileArgs = (
     "Test::More" => 0,
     "Test::NoTabs" => 0
   },
-  "VERSION" => "0.6",
+  "VERSION" => "1.0.0",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -47,7 +51,6 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Carp" => 0,
-  "Class::Tiny" => 0,
   "Data::UUID" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
@@ -55,10 +58,15 @@ my %FallbackPrereqs = (
   "IO::Handle" => 0,
   "IPC::Open3" => 0,
   "JSON::Any" => 0,
+  "Method::Signatures" => 0,
+  "Moo" => 0,
+  "Path::Tiny" => 0,
   "Test::Kwalitee" => 0,
   "Test::More" => 0,
   "Test::NoTabs" => 0,
+  "Types::Standard" => 0,
   "URI::Escape" => 0,
+  "namespace::clean" => 0,
   "strict" => 0,
   "warnings" => 0
 );

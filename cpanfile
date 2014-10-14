@@ -1,8 +1,12 @@
 requires "Carp" => "0";
-requires "Class::Tiny" => "0";
 requires "HTTP::Tiny" => "0";
 requires "JSON::Any" => "0";
+requires "Method::Signatures" => "0";
+requires "Moo" => "0";
+requires "Path::Tiny" => "0";
+requires "Types::Standard" => "0";
 requires "URI::Escape" => "0";
+requires "namespace::clean" => "0";
 requires "strict" => "0";
 requires "warnings" => "0";
 
