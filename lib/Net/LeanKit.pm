@@ -15,9 +15,9 @@ use namespace::clean;
 =head1 SYNOPSIS
 
   use Net::LeanKit;
-  my $lk = Net::LeanKit(email => 'user\@.mail.com',
-                        password => 'pass',
-                        account => 'my company');
+  my $lk = Net::LeanKit->(email => 'user\@.mail.com',
+                          password => 'pass',
+                          account => 'my company');
   $lk->getBoards;
 
 =attr email
