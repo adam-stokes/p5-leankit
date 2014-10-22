@@ -43,22 +43,7 @@ has defaultWipOverrideReason => (
     default => 'WIP Override performed by external system'
 );
 
-has headers => (
-    is      => 'ro',
-    builder => '_build_headers'
-);
-
 has ua => (is => 'ro', isa => 'Mojo::UserAgent', builder => '_build_http');
-
-method _build_boardIdentifiers {
-    return +{};
-}
-
-method _build_headers {
-    {   'Accept'       => 'application/json',
-        'Content-type' => 'application/json'
-    };
-}
 
 method _build_http {
     Mojo::UserAgent->new;
