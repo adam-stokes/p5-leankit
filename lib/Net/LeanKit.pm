@@ -64,12 +64,6 @@ method _build_http {
     Mojo::UserAgent->new;
 }
 
-=method get
-
-GET requests to leankit
-
-=cut
-
 method get ($endpoint) {
     my $url = Mojo::URL->new;
     $url->scheme('https');
@@ -87,12 +81,6 @@ method get ($endpoint) {
         croak "$err->{message}";
     }
 }
-
-=method post
-
-POST requests to leankit
-
-=cut
 
 method post ($endpoint, $body) {
     my $url = Mojo::URL->new;
