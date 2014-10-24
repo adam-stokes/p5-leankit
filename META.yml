@@ -26,7 +26,6 @@ meta-spec:
 name: Net-LeanKit
 requires:
   Carp: '0'
-  Data::Dumper::Concise: '0'
   Function::Parameters: '0'
   Mojo::JSON: '0'
   Mojo::URL: '0'
@@ -37,5 +36,5 @@ requires:
 resources:
   homepage: https://github.com/battlemidget/p5-leankit
   repository: https://github.com/battlemidget/p5-leankit.git
-version: '2.000'
+version: '2.001'
 x_authority: cpan:ADAMJS

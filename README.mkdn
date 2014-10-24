@@ -4,7 +4,7 @@ Net::LeanKit - A perl library for Leankit.com
 
 # VERSION
 
-version 2.000
+version 2.001
 
 # SYNOPSIS
 
