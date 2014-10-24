@@ -22,6 +22,7 @@ my %WriteMakefileArgs = (
   "NAME" => "Net::LeanKit",
   "PREREQ_PM" => {
     "Carp" => 0,
+    "Data::Dumper::Concise" => 0,
     "Function::Parameters" => 0,
     "Mojo::JSON" => 0,
     "Mojo::URL" => 0,
@@ -43,7 +44,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.0.1",
+  "VERSION" => "1.0.2",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -52,6 +53,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Carp" => 0,
+  "Data::Dumper::Concise" => 0,
   "Data::UUID" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,

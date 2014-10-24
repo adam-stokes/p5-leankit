@@ -8,6 +8,7 @@ use Mojo::URL;
 use Mojo::UserAgent;
 use Mojo::JSON qw(encode_json decode_json);
 use Function::Parameters;
+use Data::Dumper::Concise;
 use Moose;
 use namespace::clean;
 
@@ -76,7 +77,11 @@ method post ($endpoint, $body) {
     my $r = $self->ua->post($url->to_string => form => $body);
     if (my $res = $r->success) {
         my $content = decode_json($res->body);
-        return $content->{ReplyData}->[0];
+        return {
+            code    => $content->{ReplyCode},
+            content => $content->{ReplyData}->[0],
+            status  => $content->{ReplyText}
+        };
     }
     else {
         my $err = $r->error;

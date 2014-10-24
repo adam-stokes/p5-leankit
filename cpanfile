@@ -1,4 +1,5 @@
 requires "Carp" => "0";
+requires "Data::Dumper::Concise" => "0";
 requires "Function::Parameters" => "0";
 requires "Mojo::JSON" => "0";
 requires "Mojo::URL" => "0";

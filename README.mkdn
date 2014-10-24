@@ -4,14 +4,14 @@ Net::LeanKit - A perl library for Leankit.com
 
 # VERSION
 
-version 1.0.1
+version 1.0.2
 
 # SYNOPSIS
 
     use Net::LeanKit;
-    my $lk = Net::LeanKit(email => 'user\@.mail.com',
-                          password => 'pass',
-                          account => 'my company');
+    my $lk = Net::LeanKit->(email => 'user\@.mail.com',
+                            password => 'pass',
+                            account => 'my company');
     $lk->getBoards;
 
 # ATTRIBUTES
@@ -29,14 +29,6 @@ Password
 Account name in which your account is under, usually a company name.
 
 # METHODS
-
-## get
-
-GET requests to leankit
-
-## post
-
-POST requests to leankit
 
 ## getBoards
 

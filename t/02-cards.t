@@ -37,9 +37,9 @@ my $cards = $lk->searchCards(
     }
 );
 
-ok($cards->{TotalResults} > 0, "Found Cards");
+ok($cards->{content}->{TotalResults} > 0, "Found Cards");
 
-ok(defined($cards->{Results}->[0]->{Title}), "A title exists in cards");
+ok(defined($cards->{content}->{Results}->[0]->{Title}), "A title exists in cards");
 
 my $cardType = $identifiers->{CardTypes}->[0]->{Id};
 my $laneId = $identifiers->{Lanes}->[2]->{Id};

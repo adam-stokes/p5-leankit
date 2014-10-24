@@ -1,10 +1,40 @@
 ==================================================
-Changes from 2013-10-22 00:00:00 +0000 to present.
+Changes from 2013-10-24 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 1.0.1 at 2014-10-22 01:39:21 +0000
+version 1.0.2 at 2014-10-24 01:38:15 +0000
 ------------------------------------------
+
+  Change: 3d95dc46930537b1c129fd577dbaa6f3740f5802
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-21 21:48:16 +0000
+
+    remove unused attrs
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 835b6ed38da3314d2fe8bea80201975be449ef3f
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-21 21:46:25 +0000
+
+    don't document get/post
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 370b0b1921dfd4eb4f253bf26d51adb8e1f44838
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-21 21:45:14 +0000
+
+    fix synopsis
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 841214cd727c5dae1730f4c8db752cfb07cef0c1
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-21 21:39:41 +0000
+
+    v1.0.1 
 
   Change: 7e2d51badfadb09bef89b1faa507ff3c18f8af88
   Author: Adam Stokes <adam.stokes@ubuntu.com>
