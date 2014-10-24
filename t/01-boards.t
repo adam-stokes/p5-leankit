@@ -25,21 +25,20 @@ my $lk = Net::LeanKit->new(
 );
 
 my $boards = $lk->getBoards;
-my $boardId = $boards->[0]->{Id};
+my $boardId = $boards->{content}->[0]->{Id};
 my $board = $lk->getBoard($boardId);
 
 ok(!$board->{IsArchived}, 'Test Board boolean');
 
 ok(length $boards, "Found some boards.");
 ok($board, "Got board");
-ok(length $board->{Lanes}, "Board lanes exists");
+ok(length $board->{content}->{Lanes}, "Board lanes exists");
 ok(length $lk->getBoardIdentifiers($boardId), "Got identifiers: ".$boardId);
 ok(length $lk->getBoardBacklogLanes($boardId), "got backlog lanes");
 ok(length $lk->getBoardArchiveLanes($boardId), "got archive lanes");
 ok(length $lk->getBoardArchiveCards($boardId), "got archive cards");
-
-my $getBoardByName = $lk->getBoardByName($board->{Title});
-ok($getBoardByName->{Title} eq $board->{Title}, "Matched board title");
+my $getBoardByName = $lk->getBoardByName($board->{content}->{Title});
+ok($getBoardByName->{Title} eq $board->{content}->{Title}, "Matched board title");
 
 
 done_testing();

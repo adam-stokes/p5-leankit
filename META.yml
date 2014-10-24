@@ -37,5 +37,5 @@ requires:
 resources:
   homepage: https://github.com/battlemidget/p5-leankit
   repository: https://github.com/battlemidget/p5-leankit.git
-version: 1.0.2
+version: '2.000'
 x_authority: cpan:ADAMJS

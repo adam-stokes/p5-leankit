@@ -2,7 +2,6 @@
 
 use strict;
 use warnings;
-use Data::UUID;
 use Test::More;
 
 plan skip_all =>
@@ -26,7 +25,7 @@ my $lk = Net::LeanKit->new(
 );
 
 my $boards = $lk->getBoards;
-my $boardId = $boards->[0]->{Id};
+my $boardId = $boards->{content}->[0]->{Id};
 my $identifiers = $lk->getBoardIdentifiers($boardId);
 
 my $cards = $lk->searchCards(
@@ -41,25 +40,23 @@ ok($cards->{content}->{TotalResults} > 0, "Found Cards");
 
 ok(defined($cards->{content}->{Results}->[0]->{Title}), "A title exists in cards");
 
-my $cardType = $identifiers->{CardTypes}->[0]->{Id};
-my $laneId = $identifiers->{Lanes}->[2]->{Id};
-
-my $uuid = Data::UUID->new;
-my $uuid_str = $uuid->create_str();
+my $cardType = $identifiers->{content}->{CardTypes}->[0]->{Id};
+my $laneId = $identifiers->{content}->{Lanes}->[2]->{Id};
 
 my $newCard = {
     Title          => 'API Test',
     TypeId         => $cardType,
     Priority       => 1,
-    ExternalCardId => $uuid_str
+    ExternalCardId => time
 };
 
-$lk->addCard($boardId, $laneId, 0, $newCard);
+my $res = $lk->addCard($boardId, $laneId, 0, $newCard);
+ok($res->{code} == 201, sprintf("Card (%s) added.", $res->{content}->{CardId}));
 
-$newCard = $lk->getCardByExternalId($boardId, $uuid_str);
+$newCard = $lk->getCard($boardId, $res->{content}->{CardId});
 
-ok($newCard->[0]->{ExternalCardID} eq $uuid_str, 'Card created');
-ok($newCard->[0]->{Title} eq 'API Test', 'Card created with proper title');
-ok($lk->deleteCard($boardId, $newCard->[0]->{Id}), "Deleted card");
+ok($newCard->{content}->{Id} == $res->{content}->{CardId}, 'Card created');
+ok($newCard->{content}->{Title} eq 'API Test', 'Card created with proper title');
+ok($lk->deleteCard($boardId, $newCard->{content}->{Id}), "Deleted card");
 
 done_testing();

@@ -59,7 +59,11 @@ method get ($endpoint) {
     my $r = $self->ua->get($url->to_string);
     if (my $res = $r->success) {
         my $content = decode_json($res->body);
-        return $content->{ReplyData}->[0];
+        return {
+            code    => $content->{ReplyCode},
+            content => $content->{ReplyData}->[0],
+            status  => $content->{ReplyText}
+        };
     }
     else {
         my $err = $r->error;
@@ -131,7 +135,7 @@ Finds a board by name
 =cut
 
 method getBoardByName ($boardName) {
-    foreach my $board (@{$self->getBoards}) {
+    foreach my $board (@{$self->getBoards->{content}}) {
         next unless $board->{Title} =~ /$boardName/i;
         return $board;
     }
