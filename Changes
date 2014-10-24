@@ -3,8 +3,16 @@ Changes from 2013-10-24 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 1.0.2 at 2014-10-24 01:38:15 +0000
+version 1.0.2 at 2014-10-24 01:38:43 +0000
 ------------------------------------------
+
+  Change: 4fad6738b0bd686ca131b4df8a7598b6f4ba5c90
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-23 21:38:30 +0000
+
+    Return hash from POST responses
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
 
   Change: 3d95dc46930537b1c129fd577dbaa6f3740f5802
   Author: Adam Stokes <adam.stokes@ubuntu.com>
